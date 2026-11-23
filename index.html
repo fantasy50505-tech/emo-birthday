@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إيمو ✨🎂</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="floating-creatures"></div>
+
+    <!-- الموسيقى -->
+    <audio id="bgMusic" src="music/song.mp3" loop></audio>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+    <div class="main-wrapper">
+
+        <!-- الصفحة 1: الواجهة -->
+        <section class="card step active" id="step1">
+            <div class="virgo-badge">♍ Virgo Soul • 1 September</div>
+            <h1 class="hero-title">كل سنة وأنتِ طيبة يا إيمو ✨</h1>
+            <p class="hero-sub">حتى لو عيد ميلادك عدى، في ناس وجودهم يستاهل يتحتفل بيه في أي وقت.. 🤍</p>
+
+            <div class="animals-stage">
+                <span class="anim-animal bird" onclick="chirpEffect(this)">🕊️</span>
+                <span class="anim-animal deer" onclick="chirpEffect(this)">🦌</span>
+                <span class="anim-animal butterfly" onclick="chirpEffect(this)">🦋</span>
+            </div>
+
+            <div class="age-box">
+                <p>منورة الدنيا بطلتك الهادية بقالك:</p>
+                <div class="timer-row">
+                    <div><span id="years">21</span><small>سنة</small></div>
+                    <div><span id="days">0</span><small>يوم</small></div>
+                    <div><span id="hours">0</span><small>ساعة</small></div>
+                    <div><span id="minutes">0</span><small>دقيقة</small></div>
+                </div>
+            </div>
+
+            <button class="primary-btn" onclick="goToStep(2)">نكمل الحكاية ←</button>
+        </section>
+
+        <!-- الصفحة 2: السطور المتتالية (غزل خفيف وشيك) -->
+        <section class="card step" id="step2">
+            <div class="virgo-badge">01 • مجرد انطباع</div>
+            <h2 class="sec-title">حاجات بتتلاحظ لوحدها.. ✨</h2>
+            <p class="sec-sub">كملي قراية السطور دي بهدوء..</p>
+
+            <div class="sequential-box" id="seqLinesBox">
+                <p class="seq-line">✨ في ناس بتلفت الانتباه بهدوئها وبساطتها من غير ما تحاول.</p>
+                <p class="seq-line">🤍 ومن وقت ما عرفتك يا إيمو، وأنا بشوف فيكي حضور لطيف ومريح جداً.</p>
+                <p class="seq-line">🌸 الكلام معاكي ليه طابع مختلف، وضحكتك بتدي طاقة حلوة لأي قعدة.</p>
+                <p class="seq-line">🦋 حبيت أعملك الحاجة البسيطة دي عشان أقولك إنك بجد شخصية مميزة وتتحب.</p>
+            </div>
+
+            <button class="primary-btn" id="seqNextBtn" style="opacity: 0; pointer-events: none;" onclick="goToStep(3)">لسه في حاجة تانية 🎀</button>
+        </section>
+
+        <!-- الصفحة 3: Hello Kitty Canvas -->
+        <section class="card step" id="step3">
+            <div class="virgo-badge">02 • جرعة لطافة</div>
+            <h2 class="sec-title">Hello Kitty World 🐱🎀</h2>
+            <p class="sec-sub">المسي هالو كيتي وشوفي حركاتها!</p>
+
+            <div class="canvas-stage">
+                <canvas id="kittyCanvas" width="280" height="230"></canvas>
+            </div>
+
+            <div class="mini-note">
+                🎀 ألطف وأرق إيمو.. كفاية إن روحك حلوة وبتخلي اليوم يعدي بشكل أخف! 🌸
+            </div>
+
+            <button class="primary-btn" onclick="goToStep(4)">نشوف كيتي الأميرة 👑✨</button>
+        </section>
+
+        <!-- الصفحة 4: Princess Kitty -->
+        <section class="card step" id="step4">
+            <div class="virgo-badge">03 • ملكة برج العذراء</div>
+            <h2 class="sec-title">Princess Emo 👑💃</h2>
+            <p class="sec-sub">المسي الصورة وشوفي المفاجأة!</p>
+
+            <div class="canvas-stage">
+                <img src="https://pngimg.com/uploads/hello_kitty/hello_kitty_PNG18.png" alt="Princess Kitty" class="princess-img" onclick="popHearts(event)">
+            </div>
+
+            <div class="mini-note">
+                👑 بنت برج العذراء.. ذوق، رقة، وتفاصيل تخطف العين من أول مرة! ✨
+            </div>
+
+            <button class="primary-btn" onclick="goToStep(5)">نروح للتورتة 🎂🎈</button>
+        </section>
+
+        <!-- الصفحة 5: Pinkie Pie + التورتة -->
+        <section class="card step" id="step5">
+            <div class="virgo-badge">04 • وقت الأمنيات</div>
+            <h2 class="sec-title">Pinkie Pie Party! 🦄🎂</h2>
+            <p class="sec-sub" id="cakeHint">المسي الشمعة ونوري عيد ميلادك يا إيمو! 🕯️</p>
+
+            <div class="party-split">
+                <div class="canvas-mini">
+                    <canvas id="pinkieCanvas" width="160" height="170"></canvas>
+                </div>
+
+                <div class="cake-area" onclick="toggleCandle()">
+                    <div class="flame" id="flame"></div>
+                    <div class="candle"></div>
+                    <div class="cake-top"></div>
+                    <div class="cake-bottom"></div>
+                </div>
+            </div>
+
+            <div class="mini-note">
+                🎈 سنة جديدة حلوة زيك يا إيمو، ويا رب دايماً مبسوطة ومحققة كل اللي نفسك فيه! ✨
+            </div>
+
+            <button class="primary-btn" onclick="goToStep(6)">رسالة أخيرة ليكي ✉️</button>
+        </section>
+
+        <!-- الصفحة 6: الخطاب الأخير + صورتها مدبسة فيه -->
+        <section class="card step" id="step6">
+            <div class="letter-container">
+                
+                <!-- الصورة المدبسة في طرف الخطاب -->
+                <div class="pinned-photo-wrapper">
+                    <div class="pin-head">📌</div>
+                    <img src="emo.jpg" alt="Emo" class="pinned-img" onerror="this.parentElement.style.display='none'">
+                    <span class="photo-caption">إيمو ✨</span>
+                </div>
+
+                <div class="letter-top">
+                    <span class="letter-badge">1 SEP • VIRGO</span>
+                    <h3>إلى إيمو.. ✨</h3>
+                </div>
+                
+                <div class="letter-body-box">
+                    <p id="finalLetterText"></p>
+                </div>
+            </div>
+
+            <button class="primary-btn" onclick="celebrateFinal()">كل سنة وأنتِ طيبة يا إيمو 🎉✨</button>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
